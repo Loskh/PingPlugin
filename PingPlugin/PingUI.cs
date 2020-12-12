@@ -150,7 +150,7 @@ namespace PingPlugin
             }
 
             var currentItem = (int)this.config.RuntimeLang;
-            var supportedLanguages = new[] { Loc.Localize("English", string.Empty), Loc.Localize("Japanese", string.Empty), Loc.Localize("Spanish", string.Empty), Loc.Localize("German", string.Empty), Loc.Localize("French", string.Empty),  /*Loc.Localize("Chinese", string.Empty)*/ };
+            var supportedLanguages = new[] { Loc.Localize("English", string.Empty), Loc.Localize("Japanese", string.Empty), Loc.Localize("Spanish", string.Empty), Loc.Localize("German", string.Empty), Loc.Localize("French", string.Empty),  Loc.Localize("Chinese", string.Empty) };
             if (ImGui.Combo(Loc.Localize("Language", string.Empty), ref currentItem, supportedLanguages, supportedLanguages.Length))
             {
                 this.config.RuntimeLang = (LangKind)currentItem;
@@ -276,9 +276,9 @@ namespace PingPlugin
         {
             try
             {
-                var filePath = Path.Combine(Assembly.GetAssembly(typeof(DalamudPluginInterface)).Location, "..", "UIRes", "NotoSansCJKjp-Medium.otf");
+                var filePath = Path.Combine(Assembly.GetAssembly(typeof(DalamudPluginInterface)).Location, "..", "UIRes", "NotoSansCJKsc-Medium.otf");
                 if (!File.Exists(filePath)) throw new FileNotFoundException("Font file not found!");
-                var jpRangeHandle = GCHandle.Alloc(GlyphRangesJapanese.GlyphRanges, GCHandleType.Pinned);
+                var jpRangeHandle = GCHandle.Alloc(GlyphRangesChinese.GlyphRanges, GCHandleType.Pinned);
                 this.uiFont = ImGui.GetIO().Fonts.AddFontFromFileTTF(filePath, Math.Max(8, this.config.FontScale), null, jpRangeHandle.AddrOfPinnedObject());
                 jpRangeHandle.Free();
             }

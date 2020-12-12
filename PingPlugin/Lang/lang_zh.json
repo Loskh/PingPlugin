@@ -52,7 +52,7 @@
     "description": "PingPlugin.Configuration"
   },
   "FontScale": {
-    "message": "字體比例",
+    "message": "字体比例",
     "description": "PingPlugin.Configuration"
   },
   "MonitorColor": {

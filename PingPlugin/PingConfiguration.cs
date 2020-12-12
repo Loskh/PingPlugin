@@ -87,7 +87,7 @@ namespace PingPlugin
             MonitorErrorFontColor = new Vector4(1, 0, 0, 1);
             MonitorIsVisible = true;
             PingQueueSize = 20;
-            Lang = LangKind.en.ToString();
+            Lang = LangKind.zh.ToString();
         }
 
         public void Save()

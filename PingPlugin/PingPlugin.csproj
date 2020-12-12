@@ -20,26 +20,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="CheapLoc">
-      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\CheapLoc.dll</HintPath>
-      <Private>false</Private>
+      <HintPath>D:\Games\FFXIV_Utils\Dalamud\CheapLoc.dll</HintPath>
     </Reference>
     <Reference Include="Dalamud">
-      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\Dalamud.dll</HintPath>
-      <Private>false</Private>
+      <HintPath>D:\Games\FFXIV_Utils\Dalamud\Dalamud.dll</HintPath>
     </Reference>
     <Reference Include="ImGui.NET">
-      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\ImGui.NET.dll</HintPath>
-      <Private>false</Private>
+      <HintPath>D:\Games\FFXIV_Utils\Dalamud\ImGui.NET.dll</HintPath>
     </Reference>
     <Reference Include="ImGuiScene">
-      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\ImGuiScene.dll</HintPath>
-      <Private>false</Private>
+      <HintPath>D:\Games\FFXIV_Utils\Dalamud\ImGuiScene.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>$(AppData)\XIVLauncher\addon\Hooks\Newtonsoft.Json.dll</HintPath>
-      <Private>false</Private>
+      <HintPath>D:\Games\FFXIV_Utils\Dalamud\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -55,8 +50,4 @@
     <EmbeddedResource Include="Lang\lang_ja.json" />
     <EmbeddedResource Include="Lang\lang_zh.json" />
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug (&#xD;&#xA;  echo Running Debug Post Build&#xD;&#xA;  echo Killing Dalamud&#xD;&#xA;  curl &quot;http://localhost:37435/unload_dalamud&quot; 2&gt;NUL&#xD;&#xA;  waitfor NothingAtAll /t 2 2&gt;NUL&#xD;&#xA;  echo Copying to DevPlugins&#xD;&#xA;  xcopy &quot;$(TargetPath)\..&quot; &quot;%25appdata%25\XIVLauncher\devPlugins&quot; /Y /E&#xD;&#xA;  echo Injecting Dalamud&#xD;&#xA;  C:&#xD;&#xA;  cd &quot;%25appdata%25\XIVLauncher\addon\Hooks&quot;&#xD;&#xA;  %25appdata%25\XIVLauncher\addon\Hooks\Dalamud.Injector.exe&#xD;&#xA;  exit /b 0&#xD;&#xA;)" />
-  </Target>
 </Project>
