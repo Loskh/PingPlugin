@@ -480,14 +480,14 @@ namespace PingPlugin
             try
             {
                 var filePath = Path.Combine(this.pluginInterface.DalamudAssetDirectory.FullName, "UIRes",
-                    "NotoSansCJKjp-Medium.otf");
+                    "NotoSansCJKsc-Medium.otf");
                 if (!File.Exists(filePath)) throw new FileNotFoundException("Font file not found!");
 
                 var fontPx = Math.Min(Math.Max(8, this.config.FontScale), 128);
 
                 {
                     this.uiFont = ImGui.GetIO().Fonts.AddFontFromFileTTF(filePath, fontPx, null,
-                        ImGui.GetIO().Fonts.GetGlyphRangesJapanese());
+                        ImGui.GetIO().Fonts.GetGlyphRangesChineseSimplifiedCommon());
                 }
             }
             catch (Exception e)
